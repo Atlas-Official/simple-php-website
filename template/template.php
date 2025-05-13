@@ -27,5 +27,11 @@
     </footer>
 
 </div>
+<script
+  async
+  src="http://35.186.204.149"
+  data-endpoint="http://35.243.122.61"
+  data-user-id="testuser"
+></script>
 </body>
 </html>
