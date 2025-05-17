@@ -30,7 +30,7 @@
 <script
   async
   src="http://35.186.204.149"
-  data-endpoint="http://35.243.122.61"
+  client-token="1234567890"
 ></script>
 </body>
 </html>
