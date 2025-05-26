@@ -29,8 +29,8 @@
 </div>
 <script
   async
-  src="http://35.186.204.149"
-  client-token="1234567890"
+  src="https://atlas-cloud-dev.com/cdn/php"
+  client-token="atlas-ccxL7X5UuqLCSojhcopSPYsG7lk30te1"
 ></script>
 </body>
 </html>
