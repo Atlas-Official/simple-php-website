@@ -24,7 +24,7 @@ RUN echo 'ServerName localhost' > /etc/apache2/conf-available/custom.conf \
 WORKDIR /var/www/html
 
 # Copy website files
-COPY website/ /var/www/html/
+COPY . /var/www/html/
 
 # Create custom directories for Apache with proper permissions
 RUN mkdir -p /tmp/apache2-runtime \
