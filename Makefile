@@ -1,5 +1,5 @@
 BRANCH_NAME := $(shell git rev-parse --abbrev-ref HEAD)
-ENV := $(if $(filter main,$(BRANCH_NAME)),prod,$(if $(filter staging,$(BRANCH_NAME)),staging,dev))
+ENV := $(if $(filter prod,$(BRANCH_NAME)),prod,$(if $(filter staging,$(BRANCH_NAME)),staging,dev))
 GCP_PROJECT_ID = $(if $(filter prod,$(ENV)),gcp-atlas-prod,$(if $(filter staging,$(ENV)),gcp-atlas-staging,gcp-atlas-dev-env))
 
 run:
