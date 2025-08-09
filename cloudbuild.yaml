@@ -29,3 +29,6 @@ steps:
         else
           echo "Cloud Run service does not exist, skipping deployment..."
         fi
+
+options:
+  logging: CLOUD_LOGGING_ONLY
