@@ -8,3 +8,10 @@ run:
 push:
 	gcloud config set project $(GCP_PROJECT_ID) && \
 	docker buildx build --platform linux/amd64 -t gcr.io/$(GCP_PROJECT_ID)/testwebsite-php --push .
+
+deploy:
+	make push && \
+	gcloud run deploy testwebsite-php \
+		--image=gcr.io/$(GCP_PROJECT_ID)/testwebsite-php \
+		--region=asia-northeast1 \
+		--platform=managed

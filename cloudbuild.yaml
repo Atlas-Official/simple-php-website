@@ -1,0 +1,31 @@
+steps:
+  - name: "gcr.io/cloud-builders/docker"
+    env:
+      - "DOCKER_BUILDKIT=1"
+    args:
+      - "build"
+      - "-t"
+      - "gcr.io/$PROJECT_ID/testwebsite-php"
+      - "--cache-from"
+      - "gcr.io/$PROJECT_ID/testwebsite-php:latest"
+      - "--build-arg"
+      - "BUILDKIT_INLINE_CACHE=1"
+      - "."
+
+  - name: "gcr.io/cloud-builders/docker"
+    args: ["push", "gcr.io/$PROJECT_ID/testwebsite-php"]
+
+  - name: "gcr.io/cloud-builders/gcloud"
+    entrypoint: "bash"
+    args:
+      - "-c"
+      - |
+        if gcloud run services describe testwebsite-php --region=asia-northeast1 --platform=managed &>/dev/null; then
+          echo "Cloud Run service exists, deploying..."
+          gcloud run deploy testwebsite-php \
+            --image=gcr.io/$PROJECT_ID/testwebsite-php \
+            --region=asia-northeast1 \
+            --platform=managed
+        else
+          echo "Cloud Run service does not exist, skipping deployment..."
+        fi
